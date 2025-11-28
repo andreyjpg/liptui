@@ -2,8 +2,12 @@
 import TextField from './utils/TextField.vue'
 import BackgroundBubbles from './utils/BackgroundBubbles.vue'
 import { ref } from 'vue'
+import router from '@/router'
 const email = ref('')
 const password = ref('')
+const handleMoveToHomeContainer = () => {
+  router.push('/home')
+}
 </script>
 
 <template>
@@ -21,7 +25,12 @@ const password = ref('')
         <TextField :value="password" type="password" label="Contraseña" />
       </div>
 
-      <button class="bg-blue-400 rounded-md w-32 text-white px-4 py-2 mt-3">Enter</button>
+      <button
+        class="bg-blue-400 rounded-md w-32 text-white px-4 py-2 mt-3 absolute z-10"
+        @click="handleMoveToHomeContainer"
+      >
+        Enter
+      </button>
     </div>
   </div>
 </template>

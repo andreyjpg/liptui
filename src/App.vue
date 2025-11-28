@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import HomeContainer from './components/HomeContainer.vue'
+</script>
 
-<template><RouterView /></template>
+<template><HomeContainer /></template>
 
 <style scoped></style>

@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 import './index.css'
 import './firebase'
 
+
 import App from './App.vue'
 import router from './router'
 
