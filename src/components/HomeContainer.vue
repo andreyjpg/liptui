@@ -2,7 +2,7 @@
   <BackgroundBubbles />
   <div class="absolute flex w-full h-full z-10 items-center justify-center">
     <div
-      class="relative border border-gray-200 shadow-2xl h-1/2 w-3/4 md:w-1/3 rounded-xl bg-gray-50 p-4 overflow-hidden"
+      class="relative border border-gray-200 shadow-2xl h-1/2 w-3/4 lg:w-1/3 rounded-xl bg-gray-50 p-4 overflow-hidden"
     >
       <div class="blob-pruple absolute top-56 left-[-50px]"></div>
       <div class="blob-green absolute top-[-40px] left-[-40px]"></div>
@@ -28,7 +28,7 @@
       </p>
       <div
         id="counter"
-        class="bg-[#fbbf24] rounded-lg h-18 bottom-[50%] left-8 md:left-30 absolute text-white"
+        class="bg-[#fbbf24] rounded-lg h-18 top-1/2 -translate-x-[50%] -translate-y-[50%] left-1/2 absolute text-white"
       >
         <div class="flex flex-row items-center gap-3 justify-center p-2 px-5">
           <div id="day" class="flex-col">
