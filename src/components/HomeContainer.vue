@@ -2,7 +2,7 @@
   <BackgroundBubbles />
   <div class="absolute flex w-full h-full z-10 items-center justify-center">
     <div
-      class="relative border border-gray-200 text-center shadow-2xl md:h-1/2 md:w-1/3 rounded-xl bg-gray-50 p-4 overflow-hidden"
+      class="relative border border-gray-200 shadow-2xl h-1/2 w-3/4 md:w-1/3 rounded-xl bg-gray-50 p-4 overflow-hidden"
     >
       <div class="blob-pruple absolute top-56 left-[-50px]"></div>
       <div class="blob-green absolute top-[-40px] left-[-40px]"></div>
@@ -10,35 +10,42 @@
       <div class="blob-blue absolute bottom-[-70px] right-[-15px]"></div>
 
       <p
-        class="font-inter absolute text-3xl text-white font-bold z-30 w-full text-center wrap text-animation"
+        v-if="isAniversaire"
+        class="font-inter absolute text-3xl text-white font-bold z-30 w-full text-center text-animation"
       >
         Bon anniversaire
       </p>
       <p
-        class="font-inter absolute text-3xl text-white font-bold mt-8 z-30 w-full text-center wrap text-animation"
+        v-else
+        class="font-inter absolute text-3xl text-white font-bold z-30 w-full text-center text-animation"
+      >
+        Je t'aime
+      </p>
+      <p
+        class="font-inter absolute text-3xl text-white font-bold mt-8 z-30 w-full text-center text-animation"
       >
         Ma chérie
       </p>
       <div
         id="counter"
-        class="bg-[#fbbf24] rounded-lg h-18 bottom-[50%] left-30 absolute text-white"
+        class="bg-[#fbbf24] rounded-lg h-18 bottom-[50%] left-8 md:left-30 absolute text-white"
       >
         <div class="flex flex-row items-center gap-3 justify-center p-2 px-5">
           <div id="day" class="flex-col">
-            <p>Days</p>
-            <p>{{ days }}</p>
+            <p class="font-semibold">Days</p>
+            <p class="block text-center">{{ days }}</p>
           </div>
           <div id="hour" class="flex-col">
-            <p>Hours</p>
-            <p>{{ hours }}</p>
+            <p class="font-semibold">Hours</p>
+            <p class="block text-center">{{ hours }}</p>
           </div>
           <div id="minute" class="flex-col">
-            <p>Minutes</p>
-            <p>{{ minutes }}</p>
+            <p class="font-semibold">Minutes</p>
+            <p class="block text-center">{{ minutes }}</p>
           </div>
           <div class="flex-col">
-            <p>seconds</p>
-            <span ref="secondsRef" class="inline-block">{{ seconds }}</span>
+            <p class="font-semibold">Seconds</p>
+            <span ref="secondsRef" class="block text-center">{{ seconds }}</span>
           </div>
         </div>
       </div>
@@ -53,6 +60,7 @@ import BackgroundBubbles from './utils/BackgroundBubbles.vue'
 import { onMounted, ref, onUnmounted, watch } from 'vue'
 const tl = gsap.timeline({ delay: 0.5 })
 const targetDate = new Date('2025-12-27T23:00:00Z').getTime()
+const isAniversaire = new Date().getDay() === 29
 
 const days = ref('00')
 const hours = ref('00')
@@ -105,7 +113,7 @@ onMounted(() => {
     ease: 'elastic',
     stagger: {
       each: 0.03,
-      from: 'edges',
+      from: 'random',
     },
   })
 })
