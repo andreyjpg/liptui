@@ -2,30 +2,20 @@
   <BackgroundBubbles />
   <div class="absolute flex w-full h-full z-10 items-center justify-center">
     <div
-      class="relative border border-gray-200 shadow-2xl h-1/2 w-3/4 lg:w-1/3 rounded-xl bg-gray-50 p-4 overflow-hidden"
+      class="relative border border-gray-200 shadow-2xl h-1/2 w-4/5 lg:w-1/3 rounded-xl bg-gray-50 p-4 overflow-hidden"
     >
       <div class="blob-pruple absolute top-56 left-[-50px]"></div>
       <div class="blob-green absolute top-[-40px] left-[-40px]"></div>
       <div class="blob-red absolute top-[-60px] left-28"></div>
       <div class="blob-blue absolute bottom-[-70px] right-[-15px]"></div>
+      <div
+        class="font-inter text-3xl z-30 font-bold text-white absolute top-15 -translate-x-[50%] -translate-y-[50%] left-1/2"
+      >
+        <p v-if="isAniversaire" class="text-center text-animation">Bon anniversaire</p>
+        <p v-else class="text-center text-animation">Welcome</p>
+        <p class="text-animation">Ma chérie</p>
+      </div>
 
-      <p
-        v-if="isAniversaire"
-        class="font-inter absolute text-3xl text-white font-bold z-30 w-full text-center text-animation"
-      >
-        Bon anniversaire
-      </p>
-      <p
-        v-else
-        class="font-inter absolute text-3xl text-white font-bold z-30 w-full text-center text-animation"
-      >
-        Je t'aime
-      </p>
-      <p
-        class="font-inter absolute text-3xl text-white font-bold mt-8 z-30 w-full text-center text-animation"
-      >
-        Ma chérie
-      </p>
       <div
         id="counter"
         class="bg-[#fbbf24] rounded-lg h-18 top-1/2 -translate-x-[50%] -translate-y-[50%] left-1/2 absolute text-white"
@@ -60,7 +50,7 @@ import BackgroundBubbles from './utils/BackgroundBubbles.vue'
 import { onMounted, ref, onUnmounted, watch } from 'vue'
 const tl = gsap.timeline({ delay: 0.5 })
 const targetDate = new Date('2025-12-27T23:00:00Z').getTime()
-const isAniversaire = new Date().getDay() === 29
+const isAniversaire = new Date().getUTCDate() === 29
 
 const days = ref('00')
 const hours = ref('00')
