@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import UserLogin from '@/components/UserLogin.vue'
-import Counter from '@/components/Counter.vue'
+import Counter from '@/components/CounterDate.vue'
+import BucketList from '@/components/BucketList.vue'
 // import { onAuthStateChanged } from 'firebase/auth'
 // import { auth } from '@/firebase'
 
@@ -18,8 +19,10 @@ import Counter from '@/components/Counter.vue'
 // }
 
 const routes = [
+  { path: '', redirect: '/counter' },
   { path: '/login', component: UserLogin },
   { path: '/counter', component: Counter },
+  { path: '/bucket', component: BucketList },
 ]
 
 const router = createRouter({

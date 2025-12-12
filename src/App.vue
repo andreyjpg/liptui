@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import HomeContainer from './components/HomeContainer.vue'
+import { RouterView } from 'vue-router'
+import NavBar from './components/Navbar.vue'
 </script>
 
-<template></template>
+<template>
+  <NavBar />
+  <router-view />
+</template>
 
 <style scoped></style>
