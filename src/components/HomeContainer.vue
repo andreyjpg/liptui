@@ -1,0 +1,149 @@
+<template>
+  <BackgroundBubbles />
+  <div class="absolute flex w-full h-full z-10 items-center justify-center">
+    <div
+      class="relative border border-gray-200 shadow-2xl h-1/2 w-4/5 lg:w-1/3 rounded-xl bg-gray-50 p-4 overflow-hidden"
+    >
+      <div class="blob-pruple absolute top-56 left-[-50px]"></div>
+      <div class="blob-green absolute top-[-40px] left-[-40px]"></div>
+      <div class="blob-red absolute top-[-60px] left-28"></div>
+      <div class="blob-blue absolute bottom-[-70px] right-[-15px]"></div>
+      <div
+        class="font-inter text-3xl z-30 font-bold text-white absolute top-15 -translate-x-[50%] -translate-y-[50%] left-1/2"
+      >
+        <p v-if="isAniversaire" class="text-center text-animation">Bon anniversaire</p>
+        <p v-else class="text-center text-animation">Welcome</p>
+        <p class="text-animation">Ma chérie</p>
+      </div>
+
+      <div
+        id="counter"
+        class="bg-[#fbbf24] rounded-lg h-18 top-1/2 -translate-x-[50%] -translate-y-[50%] left-1/2 absolute text-white"
+      >
+        <div class="flex flex-row items-center gap-3 justify-center p-2 px-5">
+          <div id="day" class="flex-col">
+            <p class="font-semibold">Days</p>
+            <p class="block text-center">{{ days }}</p>
+          </div>
+          <div id="hour" class="flex-col">
+            <p class="font-semibold">Hours</p>
+            <p class="block text-center">{{ hours }}</p>
+          </div>
+          <div id="minute" class="flex-col">
+            <p class="font-semibold">Minutes</p>
+            <p class="block text-center">{{ minutes }}</p>
+          </div>
+          <div class="flex-col">
+            <p class="font-semibold">Seconds</p>
+            <span ref="secondsRef" class="block text-center">{{ seconds }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import gsap from 'gsap'
+import { SplitText } from 'gsap/all'
+import BackgroundBubbles from './utils/BackgroundBubbles.vue'
+import { onMounted, ref, onUnmounted, watch } from 'vue'
+const tl = gsap.timeline({ delay: 0.5 })
+const targetDate = new Date('2025-12-27T23:00:00Z').getTime()
+const isAniversaire = new Date().getUTCDate() === 29
+
+const days = ref('00')
+const hours = ref('00')
+const minutes = ref('00')
+const seconds = ref('00')
+
+const intervalId: any = null
+
+function updateCountdown() {
+  const now = Date.now()
+  const diff = targetDate - now
+
+  if (diff <= 0) {
+    days.value = hours.value = minutes.value = seconds.value = '00'
+    clearInterval(intervalId)
+    return
+  }
+
+  const totalSeconds = Math.floor(diff / 1000)
+
+  const d = Math.floor(totalSeconds / (60 * 60 * 24))
+  const h = Math.floor((totalSeconds % (60 * 60 * 24)) / 3600)
+  const m = Math.floor((totalSeconds % 3600) / 60)
+  const s = totalSeconds % 60
+
+  days.value = String(d)
+  hours.value = String(h).padStart(2, '0')
+  minutes.value = String(m).padStart(2, '0')
+  seconds.value = String(s).padStart(2, '0')
+}
+
+onMounted(() => {
+  updateCountdown()
+  tl.intervalId = setInterval(updateCountdown, 1000)
+})
+
+onUnmounted(() => clearInterval(intervalId))
+
+onMounted(() => {
+  tl.from('#counter', {
+    y: 30,
+    opacity: 0,
+    ease: 'power1.in',
+    stagger: 0.03,
+  })
+  const split = SplitText.create('.text-animation', { type: 'chars' })
+  tl.from(split.chars, {
+    opacity: 0,
+    y: 30,
+    ease: 'elastic',
+    stagger: {
+      each: 0.03,
+      from: 'random',
+    },
+  })
+})
+
+const secondsRef = ref(null)
+
+watch([seconds, minutes, hours, days], async () => {
+  gsap.fromTo(
+    secondsRef.value,
+    { y: -20, opacity: 0, scale: 0.7 },
+    { y: 0, opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' },
+  )
+})
+</script>
+
+<style scoped>
+.blob-pruple {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  background: #a83aff;
+}
+
+.blob-green {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  background: #4ade80;
+}
+
+.blob-red {
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  background: #ff3b5f;
+}
+.blob-blue {
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  background: #60a5fa;
+}
+</style>
