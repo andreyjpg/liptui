@@ -2,6 +2,6 @@
 import HomeContainer from './components/HomeContainer.vue'
 </script>
 
-<template><HomeContainer /></template>
+<template></template>
 
 <style scoped></style>

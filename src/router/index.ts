@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import UserLogin from '@/components/UserLogin.vue'
-import HomeContainer from '@/components/HomeContainer.vue'
+import Counter from '@/components/Counter.vue'
 // import { onAuthStateChanged } from 'firebase/auth'
 // import { auth } from '@/firebase'
 
@@ -19,7 +19,7 @@ import HomeContainer from '@/components/HomeContainer.vue'
 
 const routes = [
   { path: '/login', component: UserLogin },
-  { path: '/home', component: HomeContainer },
+  { path: '/counter', component: Counter },
 ]
 
 const router = createRouter({
