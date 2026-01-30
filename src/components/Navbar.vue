@@ -21,13 +21,14 @@ import { RouterLink } from 'vue-router'
 <style scoped>
 .active-link {
   font-weight: 700;
-  color: #a78bfa;
+  color: #1f3cde;
   -webkit-text-decoration: #ff3b5f underline wavy;
   text-decoration: #ff3b5f underline wavy;
 }
 .blur-bg {
-  background-color: transparent;
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 .menu-option {
   transition: transform 0.2s ease;
