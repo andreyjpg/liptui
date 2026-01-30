@@ -1,7 +1,9 @@
 <template>
-  <div></div>
+  <Background> </Background>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import Background from './utils/ScrapbookBackground.vue'
+</script>
 
 <style scoped></style>
