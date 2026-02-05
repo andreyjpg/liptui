@@ -8,8 +8,11 @@
       to="/counter"
       >Counter</RouterLink
     >
-    <RouterLink exact-active-class="active-link" class="hover:text-sky-500 menu-option" to="/bucket"
-      >Bucket List</RouterLink
+    <RouterLink
+      exact-active-class="active-link"
+      class="hover:text-sky-500 menu-option"
+      to="/playlist"
+      >Valentine</RouterLink
     >
   </div>
 </template>

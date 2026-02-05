@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import UserLogin from '@/components/UserLogin.vue'
 import Counter from '@/components/CounterDate.vue'
 import BucketList from '@/components/BucketList.vue'
+import LovePlaylist from '@/components/LovePlaylist.vue'
 // import { onAuthStateChanged } from 'firebase/auth'
 // import { auth } from '@/firebase'
 
@@ -23,6 +24,7 @@ const routes = [
   { path: '/login', component: UserLogin },
   { path: '/counter', component: Counter },
   { path: '/bucket', component: BucketList },
+  { path: '/playlist', component: LovePlaylist },
 ]
 
 const router = createRouter({
