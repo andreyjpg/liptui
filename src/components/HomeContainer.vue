@@ -49,7 +49,7 @@ import { SplitText } from 'gsap/all'
 import BackgroundBubbles from './utils/BackgroundBubbles.vue'
 import { onMounted, ref, onUnmounted, watch } from 'vue'
 const tl = gsap.timeline({ delay: 0.5 })
-const targetDate = new Date('2025-12-27T23:00:00Z').getTime()
+const targetDate = new Date('2026-03-19T18:00:00Z').getTime()
 const isAniversaire = new Date().getUTCDate() === 29
 
 const days = ref('00')
