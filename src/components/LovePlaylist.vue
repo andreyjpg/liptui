@@ -1,10 +1,201 @@
 <template>
-  <LoveBackground></LoveBackground>
-  <p>Esto es un texto</p>
+  <LoveBackground>
+    <div class="relative justify-center flex flex-col w-full text-center gap-3 z-10">
+      <p class="text-pink-800 font-bold text-3xl font-nunito">Happy Valentine's day mon amour</p>
+      <p class="text-lime-100 text-2xl font-light font-quicksand italic">
+        I've specially select some songs that make me remember of you
+      </p>
+      <div
+        class="relative sm:w-1/4 1/2 h-auto self-center bg-rose-50 border rounded-2xl border-rose-50"
+      >
+        <div class="relative flex flex-col items-center gap-2 sm:py-2 py-5">
+          <motion.div
+            :initial="{
+              opacity: 0,
+              x: -20,
+            }"
+            :animate="{
+              opacity: 1,
+              x: 0,
+            }"
+            :exit="{
+              opacity: 0,
+              x: -20,
+            }"
+            v-if="showDetail"
+            class="py-4 w-full"
+          >
+            <motion.div
+              :initial="{
+                opacity: 0,
+                x: -20,
+              }"
+              :animate="{
+                opacity: 1,
+                x: 0,
+              }"
+              :while-hover="{
+                scale: 1.12,
+              }"
+              class="self-start px-8 text-pink-700"
+              @click="hideDetail"
+              ><ArrowLeft size="32"
+            /></motion.div>
+            <div class="flex flex-col justify-center items-center gap-6 px-5">
+              <motion.img
+                :src="photoSelected.coverPic"
+                :initial="{ scale: 0.7, opacity: 0 }"
+                :animate="{ scale: 1, opacity: 1 }"
+                :transition="{ delay: 0.2, type: 'spring' }"
+                class="w-32 h-32 rounded-xl shadow-lg shadow-rose-300"
+              >
+              </motion.img>
+              <motion.div
+                :initial="{ scale: 0.7, opacity: 0, x: -100 }"
+                :animate="{ scale: 1, opacity: 1, x: 0 }"
+                :transition="{ delay: 0.2, type: 'spring' }"
+                class="flex flex-col gap-1"
+              >
+                <span class="font-playFair tracking-wide font-bold text-pink-700 text-xl">{{
+                  photoSelected.name
+                }}</span>
+                <span class="font-nunito italic text-rose-500">{{ photoSelected.autor }}</span>
+              </motion.div>
+
+              <motion.div
+                class="relative bg-white px-4 py-2 pt-6 rounded-2xl shadow-xl shadow-rose-200"
+                :initial="{ scale: 0.7, opacity: 0, y: 20 }"
+                :animate="{ scale: 1, opacity: 1, y: 0 }"
+                :transition="{ delay: 0.2, type: 'spring' }"
+              >
+                <div
+                  class="rounded-4xl bg-rose-500 absolute top-0 left-1/2 -translate-x-1/2 px-2 text-xs font-nunito text-white"
+                >
+                  Secret message
+                </div>
+                <p class="font-nunito text-sm text-pink-700">{{ photoSelected.description }}</p>
+              </motion.div>
+            </div>
+          </motion.div>
+          <motion.div
+            v-else
+            :initial="{
+              opacity: 0,
+              x: -20,
+            }"
+            :animate="{
+              opacity: 1,
+              x: 0,
+            }"
+            :exit="{
+              opacity: 0,
+              x: -20,
+            }"
+            class="p-4"
+          >
+            <div class="flex flex-row gap-4">
+              <motion.div
+                :animate="{
+                  rotate: 360,
+                }"
+                :transition="{
+                  repeat: Infinity,
+                  duration: 5,
+                  ease: 'linear',
+                }"
+                class="w-20 h-20 bg-linear-to-l rounded-full shrink-0 to-rose-300 from-pink-700 flex my-auto justify-center"
+              >
+                <Disc size="40" class="self-center text-white/80" />
+              </motion.div>
+              <div class="flex flex-col items-start justify-center">
+                <span class="text-pink-700 font-bold font-playFair text-xl"
+                  >For my favorite person</span
+                >
+                <span class="text-rose-500 font-light text-start font-nunito"
+                  >{{ songs.length }} songs ~ tap to reveal a secret</span
+                >
+                <a
+                  href="https://link.deezer.com/s/32pnIiU995OFNpBrP8dIZ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-3 inline-flex items-center gap-2 rounded-xl bg-pink-700/90 px-4 py-2 text-white font-nunito text-sm hover:bg-pink-700 transition"
+                >
+                  <HeartPlus></HeartPlus>
+                  <span>Listen on Deezer</span>
+                </a>
+              </div>
+            </div>
+            <div class="flex flex-col gap-3 mt-4">
+              <div
+                v-for="song in songs"
+                :key="song.id"
+                class="cursor-pointer"
+                @click="toggle(song)"
+              >
+                <motion.div
+                  class="shrink-0 px-5 py-3 rounded-2xl bg-white shadow-lg shadow-rose-200"
+                  :initial="{
+                    opacity: 0,
+                    x: -20,
+                  }"
+                  :animate="{
+                    opacity: 1,
+                    x: 0,
+                  }"
+                  :while-hover="{
+                    scale: 1.12,
+                  }"
+                >
+                  <div class="flex flex-row gap-5">
+                    <img :src="song.coverPic" alt="" class="w-12 h-12 rounded-xl" />
+                    <div class="flex flex-col shrink-0 text-start">
+                      <span
+                        class="text-pink-700 font-bold font-playFair tracking-wide text-wrap w-40"
+                      >
+                        {{ song.name }}
+                      </span>
+                      <span class="text-rose-500 font-light font-nunito">{{ song.autor }}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+      <p class="px-5 font-nunito text-rose-700">pssst je t'aime</p>
+    </div>
+  </LoveBackground>
 </template>
 
 <script lang="ts" setup>
 import LoveBackground from './utils/LoveBackground.vue'
+import { ref, computed } from 'vue'
+import { motion } from 'motion-v'
+import { useQuery } from '@tanstack/vue-query'
+import { fetchSongs } from '@/queries/playlist/fetchSongs'
+import Disc from 'vue-material-design-icons/Disc.vue'
+import type { Song } from '@/queries/playlist/fetchSongs'
+import ArrowLeft from 'vue-material-design-icons/ChevronLeft.vue'
+import HeartPlus from 'vue-material-design-icons/HeartPlusOutline.vue'
+
+const photoSelected = ref<Song>({} as Song)
+const showDetail = ref<boolean>(false)
+
+const { data } = useQuery({
+  queryKey: ['songs'],
+  queryFn: fetchSongs,
+})
+const songs = computed(() => data.value ?? [])
+
+const hideDetail = () => {
+  showDetail.value = false
+}
+
+function toggle(song: Song) {
+  showDetail.value = true
+  photoSelected.value = song
+}
 </script>
 
 <style scoped></style>

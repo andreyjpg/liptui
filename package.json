@@ -16,7 +16,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.90.20",
+    "@tanstack/vue-query": "^5.92.9",
+    "@vueuse/core": "^14.2.0",
     "firebase": "^12.5.0",
     "gsap": "^3.13.0",
     "motion-v": "^1.7.4",

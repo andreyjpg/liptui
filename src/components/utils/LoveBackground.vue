@@ -1,8 +1,13 @@
 <template>
-  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 bg-rose-200">
-    <div v-for="(icon, i) in icons" :key="i" class="icon-floating">
-      <MusicIcon v-if="icon === 'music'" class="bg-gray-700 opacity-60" />
-      <HeartIcon v-else class="bg-gray-700 opacity-60" />
+  <div class="relative min-h-screen overflow-hidden">
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 bg-rose-200 py-20">
+      <div v-for="(icon, i) in icons" :key="i" class="icon-floating">
+        <MusicIcon v-if="icon === 'music'" />
+        <HeartIcon v-else />
+      </div>
+    </div>
+    <div class="relative z-10 min-h-screen w-full flex items-start justify-center pt-20 px-4">
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -13,7 +18,7 @@ import HeartIcon from 'vue-material-design-icons/Heart.vue'
 import gsap from 'gsap'
 import { onMounted } from 'vue'
 
-const icons = Array.from({ length: 15 }, () => (Math.random() > 0.5 ? 'music' : 'heart'))
+const icons = Array.from({ length: 30 }, () => (Math.random() > 0.5 ? 'music' : 'heart'))
 
 onMounted(() => {
   gsap.utils.toArray<HTMLElement>('.icon-floating').forEach((el) => {
@@ -43,7 +48,8 @@ onMounted(() => {
 <style scoped>
 .icon-floating {
   position: absolute;
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
+  color: oklch(71.2% 0.194 13.428);
 }
 </style>
