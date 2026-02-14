@@ -1,16 +1,16 @@
 <template>
   <div
-    class="absolute z-20 flex justify-center p-4 rounded-lg gap-8 mt-4 left-1/2 -translate-x-[50%] blur-bg"
+    class="absolute z-20 flex justify-center p-4 items-center rounded-lg gap-8 mt-4 left-1/2 -translate-x-[50%] blur-bg"
   >
     <RouterLink
       exact-active-class="active-link"
-      class="hover:text-pink-500 text-lime-50 menu-option"
+      class="hover:text-pink-500 text-lime-50 menu-option text-nowrap"
       to="/counter"
       >Nos retrouvailles</RouterLink
     >
     <RouterLink
       exact-active-class="active-link"
-      class="hover:text-pink-500 menu-option"
+      class="hover:text-pink-500 menu-option text-nowrap"
       to="/playlist"
       >Notre histoire</RouterLink
     >
