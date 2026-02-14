@@ -12,7 +12,7 @@
         class="font-inter text-3xl z-30 font-bold text-white absolute top-15 -translate-x-[50%] -translate-y-[50%] left-1/2"
       >
         <p v-if="isAniversaire" class="text-center text-animation">Bon anniversaire</p>
-        <p v-else class="text-center text-animation">Welcome</p>
+        <p v-else class="text-center text-animation">Bienvenue</p>
         <p class="text-animation">Ma chérie</p>
       </div>
 

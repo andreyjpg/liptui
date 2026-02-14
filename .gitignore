@@ -9,7 +9,7 @@ lerna-debug.log*
 
 .env
 
-
+.firebase/hosting
 
 node_modules
 .DS_Store
