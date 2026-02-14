@@ -1,12 +1,15 @@
 <template>
   <LoveBackground>
     <div class="relative justify-center flex flex-col w-full text-center gap-3 z-10">
-      <p class="text-pink-800 font-bold text-3xl font-nunito">Happy Valentine's day mon amour</p>
-      <p class="text-lime-100 text-2xl font-light font-quicksand italic">
-        I've specially select some songs that make me remember of you
+      <p class="text-pink-800 font-bold text-3xl font-playFair tracking-wider">
+        Joyeuse Saint-Valentin, mon amour
+      </p>
+      <p class="text-rose-400 self-center sm:w-1/2 text-2xl font-light font-quicksand italic">
+        J’ai choisi ces chansons parce qu’elles racontent un peu notre histoire… et ce que j’espère
+        encore écrire avec toi.
       </p>
       <div
-        class="relative sm:w-1/4 1/2 h-auto self-center bg-rose-50 border rounded-2xl border-rose-50"
+        class="relative sm:w-1/4 h-auto self-center bg-rose-50 border rounded-2xl border-rose-50"
       >
         <div class="relative flex flex-col items-center gap-2 sm:py-2 py-5">
           <motion.div
@@ -71,7 +74,7 @@
                 <div
                   class="rounded-4xl bg-rose-500 absolute top-0 left-1/2 -translate-x-1/2 px-2 text-xs font-nunito text-white"
                 >
-                  Secret message
+                  Message privé
                 </div>
                 <p class="font-nunito text-sm text-pink-700">{{ photoSelected.description }}</p>
               </motion.div>
@@ -108,7 +111,7 @@
                 <Disc size="40" class="self-center text-white/80" />
               </motion.div>
               <div class="flex flex-col items-start justify-center">
-                <span class="text-pink-700 font-bold font-playFair text-xl"
+                <span class="text-pink-700 font-bold tracking-wide font-playFair text-xl"
                   >For my favorite person</span
                 >
                 <span class="text-rose-500 font-light text-start font-nunito"
@@ -125,7 +128,21 @@
                 </a>
               </div>
             </div>
-            <div class="flex flex-col gap-3 mt-4">
+            <motion.div
+              v-if="isLoading"
+              class="self-center w-full text-pink-700 relative mt-5 h-24"
+              :animate="{ scale: [1, 1.15, 1] }"
+              :transition="{ repeat: Infinity, duration: 1, ease: 'easeInOut' }"
+            >
+              <motion.div
+                class="absolute inset-0 flex items-center justify-center"
+                :animate="{ opacity: [1, 0, 1] }"
+                :transition="{ repeat: Infinity, duration: 3, times: [0, 0.5, 1] }"
+              >
+                <MusicIcon size="42" />
+              </motion.div>
+            </motion.div>
+            <div v-else class="flex flex-col gap-3 mt-4">
               <div
                 v-for="song in songs"
                 :key="song.id"
@@ -146,15 +163,15 @@
                     scale: 1.12,
                   }"
                 >
-                  <div class="flex flex-row gap-5">
+                  <div class="flex flex-row gap-5 items-center">
                     <img :src="song.coverPic" alt="" class="w-12 h-12 rounded-xl" />
                     <div class="flex flex-col shrink-0 text-start">
-                      <span
-                        class="text-pink-700 font-bold font-playFair tracking-wide text-wrap w-40"
-                      >
+                      <span class="text-pink-700 font-bold font-playFair tracking-wide text-wrap">
                         {{ song.name }}
                       </span>
-                      <span class="text-rose-500 font-light font-nunito">{{ song.autor }}</span>
+                      <span class="text-rose-500 font-light font-nunito w-40">{{
+                        song.autor
+                      }}</span>
                     </div>
                   </div>
                 </motion.div>
@@ -163,7 +180,7 @@
           </motion.div>
         </div>
       </div>
-      <p class="px-5 font-nunito text-rose-700">pssst je t'aime</p>
+      <p class="pt-5 pb-20 font-nunito text-rose-700 italic">pssst je t'aime</p>
     </div>
   </LoveBackground>
 </template>
@@ -178,11 +195,12 @@ import Disc from 'vue-material-design-icons/Disc.vue'
 import type { Song } from '@/queries/playlist/fetchSongs'
 import ArrowLeft from 'vue-material-design-icons/ChevronLeft.vue'
 import HeartPlus from 'vue-material-design-icons/HeartPlusOutline.vue'
+import MusicIcon from 'vue-material-design-icons/Music.vue'
 
 const photoSelected = ref<Song>({} as Song)
 const showDetail = ref<boolean>(false)
 
-const { data } = useQuery({
+const { data, isLoading } = useQuery({
   queryKey: ['songs'],
   queryFn: fetchSongs,
 })

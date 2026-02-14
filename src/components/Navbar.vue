@@ -4,15 +4,15 @@
   >
     <RouterLink
       exact-active-class="active-link"
-      class="hover:text-sky-500 menu-option"
+      class="hover:text-pink-500 text-lime-50 menu-option"
       to="/counter"
-      >Counter</RouterLink
+      >Nos retrouvailles</RouterLink
     >
     <RouterLink
       exact-active-class="active-link"
-      class="hover:text-sky-500 menu-option"
+      class="hover:text-pink-500 menu-option"
       to="/playlist"
-      >Valentine</RouterLink
+      >Notre histoire</RouterLink
     >
   </div>
 </template>
@@ -24,7 +24,7 @@ import { RouterLink } from 'vue-router'
 <style scoped>
 .active-link {
   font-weight: 700;
-  color: #1f3cde;
+  color: var(--color-pink-800);
   -webkit-text-decoration: #ff3b5f underline wavy;
   text-decoration: #ff3b5f underline wavy;
 }
