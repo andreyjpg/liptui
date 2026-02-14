@@ -6,7 +6,7 @@
         <HeartIcon v-else />
       </div>
     </div>
-    <div class="relative z-10 min-h-screen w-full flex items-start justify-center pt-20 px-4">
+    <div class="relative z-10 min-h-screen w-full flex items-start justify-center pt-28 px-4">
       <slot></slot>
     </div>
   </div>
