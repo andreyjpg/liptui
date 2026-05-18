@@ -10,10 +10,16 @@
     >
     <RouterLink
       exact-active-class="active-link"
-      class="hover:text-pink-500 menu-option text-nowrap"
+      class="hover:text-pink-500 text-lime-50 menu-option text-nowrap"
       to="/playlist"
       >Notre histoire</RouterLink
     >
+    <RouterLink
+      exact-active-class="active-link"
+      class="hover:text-pink-500 text-lime-50 menu-option text-nowrap"
+      to="/first-anniversary"
+      >La mission
+    </RouterLink>
   </div>
 </template>
 
