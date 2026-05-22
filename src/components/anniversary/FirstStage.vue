@@ -66,6 +66,17 @@
               </div>
             </VueDraggable>
           </div>
+          <motion.button
+            v-if="showWinnerMessage"
+            :while-hover="{
+              scale: 1.12,
+            }"
+            id="start-button"
+            class="cursor-pointer hover:bg-green-800 boder mt-2 bg-green-600 rounded-xl px-2 py-1 font-vt323 text-white text-xl"
+            @click="() => emit('change-stage', 2)"
+          >
+            Prochaine mission
+          </motion.button>
         </div>
       </div>
     </BackgroundImage>
@@ -81,6 +92,8 @@ import { VueDraggable } from 'vue-draggable-plus'
 import { ANSWERS } from './constants/FirstStage'
 import { shuffle } from '@/utils'
 import PostItNotes from '../utils/PostItNotes.vue'
+
+const emit = defineEmits<{ 'change-stage': [value: number] }>()
 
 const listOfOptions = ref(shuffle(ANSWERS))
 const showWinnerMessage = ref(false)
