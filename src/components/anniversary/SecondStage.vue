@@ -15,21 +15,19 @@
           <div class="text-lg text-spyGreen font-sourceCode">Mission 2 - Paris</div>
           <div class="text-lg text-spyGreen font-sourceCode">Fragment: LIS - ??</div>
         </div>
-        <AnimatePresence
-          ><motion.p
+        <AnimatePresence>
+          <motion.p
             v-if="showWin"
             :initial="{ opacity: 0 }"
             :animate="{ opacity: 1 }"
             :transition="{ delay: 0.5, duration: 1 }"
-            class="text-xl font-spaceGrotesk mt-2 text-spyGreen"
+            class="text-xl font-spaceGrotesk text-spyGreen text-center mt-10"
           >
             MESSAGE DÉCHIFFRÉ
-            <br />
-            Je parie que tu es très bonne dans ce jeu. <br />Fragment 02: 06
-          </motion.p></AnimatePresence
-        >
-
-        <div class="bg-[#f5f0e0] p-5 rounded-xl flex flex-col gap-5 w-1/2 m-auto h-full mt-10">
+            <br />Fragment 02: 06
+          </motion.p>
+        </AnimatePresence>
+        <div class="bg-[#f5f0e0] p-5 rounded-xl flex flex-col gap-5 w-1/2 m-auto h-full mt-5">
           <div class="flex justify-between border-b pb-3 border-[#c8b880]">
             <p class="text-[#8a7a50] font-spaceGrotesk">Transmission Chiffré:</p>
             <p class="text-[#8a7a50] font-spaceGrotesk">Origine: Paris</p>
@@ -58,17 +56,19 @@
             <YZPidgen />
           </div>
         </div>
-        <motion.button
-          v-if="showWin"
-          :while-hover="{
-            scale: 1.12,
-          }"
-          id="start-button"
-          class="cursor-pointer hover:bg-green-800 boder mt-2 bg-green-600 rounded-xl px-2 py-1 font-vt323 text-white text-xl"
-          @click="() => emit('change-stage', 2)"
-        >
-          Prochaine mission
-        </motion.button>
+        <div class="flex justify-center">
+          <motion.button
+            v-if="showWin"
+            :while-hover="{
+              scale: 1.12,
+            }"
+            id="start-button"
+            class="cursor-pointer hover:bg-green-800 boder bg-green-600 rounded-xl px-2 py-1 font-vt323 text-white text-xl mt-5"
+            @click="() => emit('change-stage', 3)"
+          >
+            Prochaine mission
+          </motion.button>
+        </div>
       </div>
     </BackgroundImage>
   </motion.div>
@@ -93,10 +93,14 @@ const SECRET_WORD = 'FLASHINVADERS'
 const answerCode = ref(new Array(SECRET_WORD.length).fill(''))
 const showWin = ref(false)
 
-watch(answerCode, (newAnswer) => {
-  const code = newAnswer.join().toLocaleUpperCase()
-  if (code === SECRET_WORD) showWin.value = true
-})
+watch(
+  answerCode,
+  (newAnswer) => {
+    const code = newAnswer.join('').toLocaleUpperCase()
+    if (code === SECRET_WORD) showWin.value = true
+  },
+  { deep: true },
+)
 </script>
 
 <style></style>
