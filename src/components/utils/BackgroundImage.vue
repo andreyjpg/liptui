@@ -19,12 +19,12 @@ img {
   height: auto;
 }
 .overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(10, 12, 30, 0.82);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 12, 30, 0.7);
   pointer-events: none;
 }
 </style>

@@ -103,7 +103,6 @@ const handleUpdate = () => {
   const filteredAnswers = options.filter((option, index) => {
     return option.id !== index + 1
   })
-  console.log(filteredAnswers)
   if (filteredAnswers.length === 0) handleWinner()
 }
 
