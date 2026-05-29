@@ -3,6 +3,7 @@ import UserLogin from '@/components/UserLogin.vue'
 import Counter from '@/components/CounterDate.vue'
 import BucketList from '@/components/BucketList.vue'
 import LovePlaylist from '@/components/LovePlaylist.vue'
+import EscapeRoomContainer from '@/components/anniversary/EscapeRoomContainer.vue'
 // import { onAuthStateChanged } from 'firebase/auth'
 // import { auth } from '@/firebase'
 
@@ -25,6 +26,7 @@ const routes = [
   { path: '/counter', component: Counter },
   { path: '/bucket', component: BucketList },
   { path: '/playlist', component: LovePlaylist },
+  { path: '/first-anniversary', component: EscapeRoomContainer },
 ]
 
 const router = createRouter({

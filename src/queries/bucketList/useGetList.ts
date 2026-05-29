@@ -1,5 +1,5 @@
 import { collection, getDocs, orderBy, query } from 'firebase/firestore'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/vue-query'
 import { firestore } from '@/firebase'
 
 import zod from 'zod'
