@@ -62,7 +62,7 @@ import AlertCircle from 'vue-material-design-icons/AlertCircle.vue'
 import CheckCircle from 'vue-material-design-icons/CheckCircle.vue'
 import Close from 'vue-material-design-icons/Close.vue'
 
-const emit = defineEmits<{ 'toggle-EnterCode' }>()
+const emit = defineEmits<{ 'toggle-EnterCode': [] }>()
 const handleChangeStage = inject<(stage: number) => void>('changeStage')
 const showWin = ref(false)
 
