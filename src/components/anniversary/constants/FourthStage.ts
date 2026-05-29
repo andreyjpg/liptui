@@ -40,7 +40,7 @@ export const ANIMALS: AnimalProp[] = [
   },
   {
     id: 4,
-    name: 'Un Toucan (Perudo)',
+    name: 'Un Toucan',
     image: Toucan,
     isCorrect: true,
     isSelected: false,

@@ -1,7 +1,7 @@
 <template>
   <div class="relative min-h-screen overflow-auto">
     <img se :src="props.image" class="fixed inset-0 w-full h-full" draggable="false" />
-    <div class="overlay"></div>
+    <div v-if="!props.noOverlay" class="overlay"></div>
 
     <div class="absolute w-full h-full">
       <slot></slot>
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps(['image'])
+const props = defineProps(['image', 'noOverlay'])
 </script>
 
 <style>

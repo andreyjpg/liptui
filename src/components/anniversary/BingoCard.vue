@@ -5,10 +5,10 @@
       y: -5,
     }"
     :while-press="{
-        
+      scale: [0.9, 1.1, 0.9, 1.1],
     }"
-    @click=""
-    class="bingoCard"
+    @click="() => emit('click-card', props.animal.id)"
+    :class="['bingoCard', props.animal.isSelected && 'bingoCardSelected']"
   >
     <img class="bingoImg" :src="props.animal.image" />
     <p>{{ props.animal.name }}</p>
@@ -18,6 +18,8 @@
 <script lang="ts" setup>
 import type { AnimalProp } from './constants/FourthStage'
 import { motion } from 'motion-v'
+
+const emit = defineEmits<{ 'click-card': [id: number] }>()
 
 const props = defineProps<{
   animal: AnimalProp
@@ -30,6 +32,7 @@ const props = defineProps<{
   height: 120px;
   object-fit: cover;
   border-radius: 50%;
+  pointer-events: none;
 }
 .bingoCard {
   border-radius: 7px;
@@ -46,6 +49,11 @@ const props = defineProps<{
   gap: 5px;
 }
 .bingoCard:hover {
+  background-color: rgba(60, 160, 80, 0.25);
+  color: #a0ffb0;
+  border: 1px solid rgba(100, 220, 140, 0.8);
+}
+.bingoCardSelected {
   background-color: rgba(60, 160, 80, 0.25);
   color: #a0ffb0;
   border: 1px solid rgba(100, 220, 140, 0.8);

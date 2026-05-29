@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { provide, ref } from 'vue'
 import { onMounted } from 'vue'
 import IntroStage from './IntroStage.vue'
 import FirstStage from './FirstStage.vue'
@@ -17,7 +17,9 @@ const handleChangeStage = (newValue: number) => {
 onMounted(() => {
   stage.value = parseInt(localStorage.getItem('stage') || '0')
 })
-// const fragments = ref([])
+provide('changeStage', (value: number) => {
+  handleChangeStage(value)
+})
 </script>
 
 <template>
