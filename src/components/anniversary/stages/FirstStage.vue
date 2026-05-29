@@ -85,13 +85,13 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import BackgroundImage from '../utils/BackgroundImage.vue'
+import BackgroundImage from '../../utils/BackgroundImage.vue'
 import lisbonImage from '@/assets/noite-lisbon.jpg'
 import { motion, AnimatePresence } from 'motion-v'
 import { VueDraggable } from 'vue-draggable-plus'
-import { ANSWERS } from './constants/FirstStage'
+import { ANSWERS } from '../constants/FirstStage'
 import { shuffle } from '@/utils'
-import PostItNotes from '../utils/PostItNotes.vue'
+import PostItNotes from '../../utils/PostItNotes.vue'
 
 const emit = defineEmits<{ 'change-stage': [value: number] }>()
 

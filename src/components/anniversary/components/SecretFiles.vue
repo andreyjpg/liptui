@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { FileProps } from './constants/ThirdStage'
+import type { FileProps } from '../constants/ThirdStage'
 import { motion, AnimatePresence } from 'motion-v'
 
 const emit = defineEmits<{

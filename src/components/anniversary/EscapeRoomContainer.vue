@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { provide, ref } from 'vue'
 import { onMounted } from 'vue'
-import IntroStage from './IntroStage.vue'
-import FirstStage from './FirstStage.vue'
-import SecondStage from './SecondStage.vue'
-import ThirdStage from './ThirdStage.vue'
-import FourthStage from './FourthStage.vue'
-import FifthStage from './FifthStage.vue'
-import FinalStage from './FinalStage.vue'
+import IntroStage from './stages/IntroStage.vue'
+import FirstStage from './stages/FirstStage.vue'
+import SecondStage from './stages/SecondStage.vue'
+import ThirdStage from './stages/ThirdStage.vue'
+import FourthStage from './stages/FourthStage.vue'
+import FifthStage from './stages/FifthStage.vue'
+import FinalStage from './stages/FinalStage.vue'
 
 const stage = ref(0)
 const handleChangeStage = (newValue: number) => {

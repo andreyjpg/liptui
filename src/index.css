@@ -3,6 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 @import 'tailwindcss';
 
 @theme {
@@ -13,5 +15,7 @@
   --font-vt323: 'VT323', monospace;
   --font-sourceCode: 'Source Code Pro', monospace;
   --font-spaceGrotesk: 'Space Grotesk', sans-serif;
+  --font-parisienne: 'Parisienne', cursive;
+  --font-lora: 'Lora', serif;
   --color-spyGreen: #64dc8c;
 }

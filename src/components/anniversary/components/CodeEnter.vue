@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <div class="flex justify-end w-full cursor-pointer" @click="() => emit('toggle-EnterCode')">
+      <Close class="text-spyGreen"></Close>
+    </div>
     <p class="text-white font-spaceGrotesk text-3xl">Code d'accès requis</p>
     <p class="text-white opacity-50 font-spaceGrotesk text-xl">Assemble les fragments</p>
     <div class="grid grid-cols-1 items-center justify-center mt-10 gap-7 relative">
@@ -57,7 +60,9 @@ import { motion } from 'motion-v'
 import { inject, ref, watch } from 'vue'
 import AlertCircle from 'vue-material-design-icons/AlertCircle.vue'
 import CheckCircle from 'vue-material-design-icons/CheckCircle.vue'
+import Close from 'vue-material-design-icons/Close.vue'
 
+const emit = defineEmits<{ 'toggle-EnterCode' }>()
 const handleChangeStage = inject<(stage: number) => void>('changeStage')
 const showWin = ref(false)
 

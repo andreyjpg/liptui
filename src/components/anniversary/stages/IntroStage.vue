@@ -57,7 +57,7 @@
 <script lang="ts" setup>
 import gsap from 'gsap'
 import { ScrambleTextPlugin } from 'gsap/all'
-import MatrixBackground from './MatrixBackground.vue'
+import MatrixBackground from '../components/MatrixBackground.vue'
 import { onMounted } from 'vue'
 import { motion, AnimatePresence } from 'motion-v'
 

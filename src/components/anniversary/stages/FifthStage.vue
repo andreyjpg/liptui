@@ -1,12 +1,12 @@
 <template>
-  <CodeEnter v-if="true"></CodeEnter>
+  <CodeEnter @toggle-EnterCode="toggleOpenCode" v-if="showEnterCode"></CodeEnter>
 
   <BackgroundImage :noOverlay="true" :image="Forest">
     <div class="flex flex-row justify-between top-0 px-4 py-5 fixed w-full z-10">
       <div class="text-lg text-spyGreen font-sourceCode">Mission 5 - La base secrète.</div>
       <div class="text-lg text-spyGreen font-sourceCode">Fragment: LIS - 06 - 04 - PERUDO</div>
     </div>
-    <SecurityCode @click="toogleOpenCode" class="codeInvisible"></SecurityCode>
+    <SecurityCode @click="() => toggleOpenCode()" class="codeInvisible"></SecurityCode>
 
     <div class="scene">
       <SecurityCode class="code"></SecurityCode>
@@ -18,10 +18,10 @@
 </template>
 
 <script lang="ts" setup>
-import BackgroundImage from '../utils/BackgroundImage.vue'
-import CodeEnter from './CodeEnter.vue'
+import BackgroundImage from '../../utils/BackgroundImage.vue'
+import CodeEnter from '../components/CodeEnter.vue'
 import Forest from '@/assets/forest.png'
-import SecurityCode from './svg/SecurityCode.vue'
+import SecurityCode from '../svg/SecurityCode.vue'
 import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
 
@@ -45,7 +45,7 @@ onMounted(() => {
   )
 })
 
-const toogleOpenCode = () => {
+const toggleOpenCode = () => {
   showEnterCode.value = !showEnterCode.value
 }
 const coodinatesCapture = (event: MouseEvent) => {

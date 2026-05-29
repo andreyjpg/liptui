@@ -61,7 +61,8 @@
             class="text-spyGreen font-sourceCode text-lg text-center"
           >
             Les souvenirs sont intacts, agent. Chaque animal, retrouvé.
-            <br> FRAGMENT 04: PERUDO
+            <br />
+            FRAGMENT 04: PERUDO
           </motion.p>
         </div>
         <div class="grid grid-cols-3 w-1/2 self-center gap-3">
@@ -91,13 +92,13 @@
 </template>
 
 <script lang="ts" setup>
-import BackgroundImage from '../utils/BackgroundImage.vue'
+import BackgroundImage from '../../utils/BackgroundImage.vue'
 import CostaRica from '@/assets/costarica.jpg'
 import { motion } from 'motion-v'
-import { ANIMALS } from './constants/FourthStage'
+import { ANIMALS } from '../constants/FourthStage'
 import { ref, watch } from 'vue'
 import { shuffle } from '@/utils'
-import BingoCard from './BingoCard.vue'
+import BingoCard from '../components/BingoCard.vue'
 
 const emit = defineEmits<{ 'change-stage': [stage: number] }>()
 

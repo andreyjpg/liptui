@@ -97,12 +97,12 @@
 
 <script lang="ts" setup>
 import Paracas from '@/assets/paracas.jpg'
-import BackgroundImage from '../utils/BackgroundImage.vue'
+import BackgroundImage from '../../utils/BackgroundImage.vue'
 import { motion } from 'motion-v'
 import AlertIcon from 'vue-material-design-icons/AlertOutline.vue'
 import { ref, watch } from 'vue'
-import SecretFiles from './SecretFiles.vue'
-import { FILES_DATA } from './constants/ThirdStage'
+import SecretFiles from '../components/SecretFiles.vue'
+import { FILES_DATA } from '../constants/ThirdStage'
 
 const emit = defineEmits<{
   'change-stage': [stage: number]
@@ -113,7 +113,9 @@ const showWin = ref(false)
 const showError = ref(false)
 
 const handleClickFile = (id: number) => {
-  selectedFile.value = id
+  if (!showWin.value) {
+    selectedFile.value = id
+  }
 }
 
 watch(selectedFile, (newSelection) => {
@@ -123,7 +125,6 @@ watch(selectedFile, (newSelection) => {
   } else {
     showError.value = true
   }
-  selectedFile.value = 0
 })
 watch(showError, () => {
   setTimeout(() => {

@@ -76,13 +76,13 @@
 
 <script lang="ts" setup>
 import { motion } from 'motion-v'
-import BackgroundImage from '../utils/BackgroundImage.vue'
+import BackgroundImage from '../../utils/BackgroundImage.vue'
 import parisImage from '@/assets/paris.jpg'
-import AIPigpen from './svg/AIPigpen.vue'
-import JRPidgen from './svg/JRPidgen.vue'
-import SXPidgen from './svg/SXPidgen.vue'
-import YZPidgen from './svg/YZPidgen.vue'
-import PidgenChar from './svg/PidgenChar.vue'
+import AIPigpen from '../svg/AIPigpen.vue'
+import JRPidgen from '../svg/JRPidgen.vue'
+import SXPidgen from '../svg/SXPidgen.vue'
+import YZPidgen from '../svg/YZPidgen.vue'
+import PidgenChar from '../svg/PidgenChar.vue'
 import { ref, watch } from 'vue'
 import { AnimatePresence } from 'motion-v'
 

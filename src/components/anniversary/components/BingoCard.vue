@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { AnimalProp } from './constants/FourthStage'
+import type { AnimalProp } from '../constants/FourthStage'
 import { motion } from 'motion-v'
 
 const emit = defineEmits<{ 'click-card': [id: number] }>()
