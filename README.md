@@ -47,3 +47,5 @@ yarn build
 yarn lint
 ```
 
+### deploy firebase 
+firebase deploy --only hosting

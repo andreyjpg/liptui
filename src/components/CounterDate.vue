@@ -1,6 +1,6 @@
 <template>
   <BackgroundBubbles />
-  <div class="absolute flex w-full h-full z-10 items-center justify-center">
+  <div class="absolute flex flex-1 flex-col w-full h-full z-10 items-center justify-center">
     <div
       class="relative border border-gray-200 shadow-2xl h-1/2 w-4/5 lg:w-1/3 rounded-xl bg-gray-50 p-4 overflow-hidden"
     >
@@ -9,7 +9,7 @@
       <div class="blob-red absolute top-[-60px] left-28"></div>
       <div class="blob-blue absolute bottom-[-70px] right-[-15px]"></div>
       <div
-        class="font-inter text-3xl z-30 font-bold text-white absolute top-15 -translate-x-[50%] -translate-y-[50%] left-1/2"
+        class="font-inter text-3xl z-10 font-bold text-white absolute top-15 -translate-x-[50%] -translate-y-[50%] left-1/2"
       >
         <p v-if="isAniversaire" class="text-center text-animation">Bon anniversaire</p>
         <p v-else class="text-center text-animation">Bienvenue</p>
@@ -40,6 +40,22 @@
         </div>
       </div>
     </div>
+    <AnimatePresence>
+      <motion.div
+        :initial="{ opacity: 0, scale: 0 }"
+        :animate="{ opacity: 1, scale: [0, 1] }"
+        :exit="{ y: 2 }"
+        v-if="!isInvitationOpen"
+        :transition="{ type: 'spring', stiffness: 300, damping: 12, duration: 0.5 }"
+        :while-hover="{ scale: 1.5 }"
+        class="mt-5"
+        @click="handleToggleEnvelope"
+      >
+        <EnvelopeDate size="small"></EnvelopeDate>
+      </motion.div>
+
+      <DateNightModal @close="handleToggleEnvelope" v-if="isInvitationOpen" />
+    </AnimatePresence>
   </div>
 </template>
 
@@ -47,10 +63,15 @@
 import gsap from 'gsap'
 import { SplitText } from 'gsap/all'
 import BackgroundBubbles from './utils/BackgroundBubbles.vue'
+import DateNightModal from './date-night/DateNightModal.vue'
+import EnvelopeDate from './date-night/EnvelopeDate.vue'
 import { onMounted, ref, onUnmounted, watch } from 'vue'
+import { motion, AnimatePresence } from 'motion-v'
 const tl = gsap.timeline({ delay: 0.5 })
-const targetDate = new Date('2026-05-29T18:00:00Z').getTime()
+const targetDate = new Date('2026-11-01T17:00:00Z').getTime()
 const isAniversaire = new Date().getUTCDate() === 29
+
+const isInvitationOpen = ref(false)
 
 const days = ref('00')
 const hours = ref('00')
@@ -58,6 +79,10 @@ const minutes = ref('00')
 const seconds = ref('00')
 
 const intervalId: any = null
+
+const handleToggleEnvelope = () => {
+  isInvitationOpen.value = !isInvitationOpen.value
+}
 
 function updateCountdown() {
   const now = Date.now()

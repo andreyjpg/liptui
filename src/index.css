@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Pinyon+Script&display=swap');
 @import 'tailwindcss';
 
 @theme {
@@ -17,5 +18,11 @@
   --font-spaceGrotesk: 'Space Grotesk', sans-serif;
   --font-parisienne: 'Parisienne', cursive;
   --font-lora: 'Lora', serif;
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-ebGaramond: 'EB Garamond', serif;
+  --font-pinyon: 'Pinyon Script', cursive;
   --color-spyGreen: #64dc8c;
+  --wine-date-primary: #6d1f25;
+  --wine-date-secondary: #8e2b32;
+  --mail-yellow: #eadbc3;
 }
